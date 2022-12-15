@@ -3,7 +3,6 @@ let width = board.offsetWidth;
 let height = board.offsetHeight;
 
 let currentNumSquares = document.querySelector('.currentNumSquares');
-
 let numSquares = parseInt(document.querySelector('#numSquares').value);
 
 function updateSquares () {
@@ -31,4 +30,15 @@ function createBoard () {
         board.appendChild(square);
     }
 }
+
 createBoard();
+let squares = document.querySelectorAll('.square');
+
+squares.forEach(function(elem) {
+    elem.addEventListener("mousemove", function(e) {
+        if(e.buttons == 1 ) {
+            e.preventDefault();
+        elem.style.backgroundColor = 'red';
+        }
+    });
+});
