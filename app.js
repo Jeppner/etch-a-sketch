@@ -2,8 +2,15 @@ let board = document.querySelector('.board');
 let width = board.offsetWidth;
 let height = board.offsetHeight;
 
+
 let currentNumSquares = document.querySelector('.currentNumSquares');
 let numSquares = parseInt(document.querySelector('#numSquares').value);
+let squares = document.querySelectorAll('.square');
+
+function chooseColour () {
+    let drawingColour = document.querySelector('#drawingColour');
+    return drawingColour;
+}
 
 function updateSquares () {
     currentNumSquares.textContent = document.querySelector('#numSquares').value;
@@ -29,16 +36,15 @@ function createBoard () {
         square.setAttribute('style', `width: ${boxWidth}px; height: ${boxHeight}px;`);
         board.appendChild(square);
     }
+    squares = document.querySelectorAll('.square');
 }
-
 createBoard();
-let squares = document.querySelectorAll('.square');
 
 squares.forEach(function(elem) {
     elem.addEventListener("mousemove", function(e) {
         if(e.buttons == 1 ) {
             e.preventDefault();
-        elem.style.backgroundColor = 'red';
+        elem.style.backgroundColor = drawingColour.value;
         }
     });
 });

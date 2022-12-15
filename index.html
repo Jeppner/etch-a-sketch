@@ -15,9 +15,14 @@
             <div class="board"></div>
         </section>
         <aside class="controls container">
+            <h2>Controls</h2>
             <div class="control">
                 <label for="numSquares">Number of squares: <span class="currentNumSquares">16</span></label>
-                <input type="range" name="numSquares" id="numSquares" value="16" min="1" max="100" step="1" onchange="updateSquares(this.value)">
+                <input type="range" name="numSquares" id="numSquares" value="16" min="1" max="100" step="1" onchange="updateSquares(this.value);">
+            </div>
+            <div class="control">
+                <label for="drawingColour">Pen colour</label>
+                <input type="color" name="drawingColour" id="drawingColour" onchange="chooseColour(this.value);">
             </div>
         </aside>
     </main>
