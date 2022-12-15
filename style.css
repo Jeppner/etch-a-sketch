@@ -84,10 +84,10 @@ input {
 	display: flex;
 	flex-wrap: wrap;
 	overflow: hidden;
+	background: white;
 }
 
 .square {
-	background: white;
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
