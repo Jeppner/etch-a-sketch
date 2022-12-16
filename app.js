@@ -3,19 +3,16 @@ let width = board.offsetWidth;
 let height = board.offsetHeight;
 
 let currentNumSquares = document.querySelector('.currentNumSquares');
-let numSquares = parseInt(document.querySelector('#numSquares').value);
+let numSlider = document.querySelector('#numSquares');
 let squares = document.querySelectorAll('.square');
 
 let tools = Array.from(document.querySelectorAll('.tool'));
+let penColourLabel = document.querySelector('.drawingColourLabel')
 let penColour = document.querySelector('#drawingColour');
+let canvasColour = document.querySelector('#backgroundColour');
 let eraser = document.querySelector('#eraser');
 
 let reset = document.querySelector('#reset');
-
-function updateSquares () {
-    currentNumSquares.textContent = `${document.querySelector('#numSquares').value} x ${document.querySelector('#numSquares').value}`;
-    clearBoard();
-}
 
 function clearBoard() {
     while(board.firstChild) {
@@ -42,7 +39,7 @@ function createBoard () {
     squares = document.querySelectorAll('.square');
     squares.forEach(function(elem) {
         elem.addEventListener("mousemove", function(e) {
-            if(e.buttons == 1 ) {
+            if(e.buttons == 1 && penColourLabel.classList.contains('active')) {
                 e.preventDefault();
             elem.style.backgroundColor = drawingColour.value;
             }
@@ -50,30 +47,32 @@ function createBoard () {
     });
 }
 
-createBoard();
+window.addEventListener('load', createBoard);
 
-function chooseColour () {
-    drawingColour = document.querySelector('#drawingColour');
-}
-
-function chooseBackground () {
+canvasColour.addEventListener("input", () => {
     let backgroundColour = document.querySelector('#backgroundColour').value;
     board.style.backgroundColor = backgroundColour;
-}
+})
 
-
-function erase () {
+eraser.addEventListener("click", () => {
     squares = document.querySelectorAll('.square');
     squares.forEach(function(elem) {
         elem.addEventListener("mousemove", function(e) {
-            if(e.buttons == 1 ) {
-                e.preventDefault();
+            if(e.buttons == 1 && eraser.classList.contains('active') ) {
+            e.preventDefault();
             elem.style.backgroundColor = 'transparent';
             }
         });
     });
-}
+});
 
+reset.addEventListener("click", clearBoard);
+
+numSlider.addEventListener("change", clearBoard);
+
+numSlider.addEventListener('input', () => {
+    currentNumSquares.textContent = `${numSlider.value} x ${numSlider.value}`;
+})
 
 const activeBtn = (e) => {
   tools.forEach(node => {

@@ -28,7 +28,9 @@ ol, ul {
 }
 
 body {
-    background: #25233b;
+    background: url('img/rainbow.webp'), url('img/stars.png'), #25233b;
+	background-repeat: no-repeat;
+	background-position: bottom center;
 	display: flex;
 	line-height: 1;
 	display: flex;
@@ -37,16 +39,16 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p, span, label {
-	color: #bebdc4;
 	font-family: Roboto, sans-serif;
 }
 h1, h2, h3 {
+	color: white;
 	font-weight: bold;
 	margin-bottom: 1rem;
 }
 
 h1 {
-	font-size: 2.5rem;
+	font-size: 3rem;
 }
 
 h2 {
@@ -97,11 +99,14 @@ input {
 	border: 1px solid #393359;
 	border-radius: 5px;
 	width: 100%;
+	background: #25233b;
 }
 .control {
 	margin-bottom: 1em;
 }
-
+label {
+	color: #bebdc4;
+}
 input, .btn {
 	width: 100%;
 	display: inline-block;
@@ -118,6 +123,11 @@ input, .btn {
 	background: white !important;
 	color: #393359 !important;
 	border: 1px solid white;
+}
+
+#reset {
+	color: salmon;
+	border: 1px solid salmon;
 }
 
 .newSquares {
