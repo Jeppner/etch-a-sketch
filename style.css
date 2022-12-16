@@ -54,7 +54,10 @@ h1 {
 h2 {
 	font-size: 1.5rem;
 }
-
+a {
+	color: #bebdc4;
+	text-decoration: none;
+}
 input:not([type='color']) {
 	margin-top: 1em;
 	display: block;
@@ -109,9 +112,14 @@ input:not([type='color']) {
 	margin-bottom: 1em;
 	width: 100%;
 }
+
+.credits {
+	margin-top: auto;
+}
 label {
 	color: #bebdc4;
 }
+
 input, .btn {
 	width: 100%;
 	display: inline-block;
