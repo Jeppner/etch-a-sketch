@@ -102,14 +102,46 @@ input {
 	margin-bottom: 1em;
 }
 
+input, .btn {
+	width: 100%;
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	font-size: 1rem;
+	text-align: center;
+	transition: 0.1s;
+}
+
+.active {
+	background: white !important;
+	color: #393359 !important;
+	border: 1px solid white;
+}
+
+.newSquares {
+	border: 1px solid lavender;
+}
+
+.btn:hover {
+	scale: 1.05;
+}
+
 input[type="range"] {
 	width: 100%;
 }
-
+.btn {
+	background: transparent;
+	border: 1px solid #bebdc4;
+	color: #bebdc4;
+	border-radius: 5px;
+	padding: .5em;
+}
 /* Desktop queries */
 @media screen and (min-width: 1024px) {
 	#main {
-		grid-template-columns: 1fr 300px;
+		grid-template-columns: 1fr 200px;
 	}
 }
 /* Mobile queries */
