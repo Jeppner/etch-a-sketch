@@ -55,7 +55,7 @@ h2 {
 	font-size: 1.5rem;
 }
 
-input {
+input:not([type='color']) {
 	margin-top: 1em;
 	display: block;
 }
@@ -99,10 +99,15 @@ input {
 	border: 1px solid #393359;
 	border-radius: 5px;
 	width: 100%;
-	background: #25233b;
+	background: #25233bf8;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 .control {
 	margin-bottom: 1em;
+	width: 100%;
 }
 label {
 	color: #bebdc4;
@@ -119,10 +124,39 @@ input, .btn {
 	transition: 0.1s;
 }
 
+input[type='color'] {
+    -webkit-appearance: none;
+    width: 50px;
+    height: 50px;
+	overflow: hidden;
+    border: none;
+	border-radius: 5px;
+	margin-bottom: 1em;
+}
+
+input::-webkit-color-swatch {
+    border: 1px solid lavender;
+}
+
+input[type="range"] {
+	width: 100%;
+}
+
+#rainbow:not(.active) {
+	background: linear-gradient(to right, #fb7c99, #faa98a, #fde68c, #a6c7a1, #aca4fe, #cb8aca);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.rainbowTool .active {
+	background: linear-gradient(30deg, #fb7c99, #faa98a, #fde68c, #a6c7a1, #aca4fe, #cb8aca) !important;
+	border: 1px solid transparent !important;
+	color: #393359 !important;
+}
+
 .active {
 	background: white !important;
 	color: #393359 !important;
-	border: 1px solid white;
+	border: 1px solid white !important;
 }
 
 #reset {
@@ -136,10 +170,6 @@ input, .btn {
 
 .btn:hover {
 	scale: 1.05;
-}
-
-input[type="range"] {
-	width: 100%;
 }
 .btn {
 	background: transparent;

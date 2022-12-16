@@ -9,9 +9,9 @@ let squares = document.querySelectorAll('.square');
 let tools = Array.from(document.querySelectorAll('.tool'));
 let penColourLabel = document.querySelector('.drawingColourLabel')
 let penColour = document.querySelector('#drawingColour');
+let rainbow = document.querySelector('#rainbow');
 let canvasColour = document.querySelector('#backgroundColour');
 let eraser = document.querySelector('#eraser');
-
 let reset = document.querySelector('#reset');
 
 function clearBoard() {
@@ -39,9 +39,13 @@ function createBoard () {
     squares = document.querySelectorAll('.square');
     squares.forEach(function(elem) {
         elem.addEventListener("mousemove", function(e) {
-            if(e.buttons == 1 && penColourLabel.classList.contains('active')) {
+            if(e.buttons == 1) {
                 e.preventDefault();
-            elem.style.backgroundColor = drawingColour.value;
+                if(penColourLabel.classList.contains('active')) {
+                    elem.style.backgroundColor = drawingColour.value;
+                } else if(rainbow.classList.contains('active')) {
+                    elem.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+                }
             }
         });
     });
@@ -65,6 +69,13 @@ eraser.addEventListener("click", () => {
         });
     });
 });
+
+penColour.addEventListener("change", () => {
+    tools.forEach(node => {
+        node.classList.remove('active');
+      });
+      penColourLabel.classList.add('active');
+})
 
 reset.addEventListener("click", clearBoard);
 
